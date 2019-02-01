@@ -1,0 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Grounded : MonoBehaviour {
+
+    private PlayerController thePC;
+
+	// Use this for initialization
+	void Start () {
+        thePC = FindObjectOfType<PlayerController>();
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            thePC.grounded = true;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            thePC.grounded = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            thePC.grounded = false;
+        }
+    }
+
+}
